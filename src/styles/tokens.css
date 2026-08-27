@@ -1,0 +1,305 @@
+/* Fonte da verdade das cores. O gate `npm run check:contrast` le este arquivo
+   e falha se algum par de src/lib/contrast-pairs.ts cair abaixo do mínimo.
+
+   Neutros com croma de 0.003 a 0.015 puxando para a matiz da marca, 205. */
+
+:root {
+  --n-000: oklch(1 0 0);
+  --n-025: oklch(0.985 0.003 205);
+  --n-050: oklch(0.968 0.004 205);
+  --n-100: oklch(0.945 0.006 205);
+  --n-150: oklch(0.915 0.007 205);
+  --n-200: oklch(0.878 0.008 205);
+  --n-300: oklch(0.79 0.01 205);
+  --n-400: oklch(0.68 0.012 205);
+  --n-500: oklch(0.575 0.013 205);
+  --n-600: oklch(0.487 0.013 205);
+  --n-700: oklch(0.395 0.013 205);
+  --n-800: oklch(0.3 0.013 205);
+  --n-850: oklch(0.252 0.014 205);
+  --n-900: oklch(0.205 0.015 205);
+  --n-950: oklch(0.168 0.013 205);
+  --n-975: oklch(0.13 0.01 205);
+
+  /* O croma de cada passo é o máximo que cabe no sRGB naquela luminância.
+     Pedir mais faz o navegador cortar em silencio. */
+  --p-050: oklch(0.962 0.017 205);
+  --p-100: oklch(0.922 0.033 205);
+  --p-200: oklch(0.855 0.053 205);
+  --p-300: oklch(0.768 0.074 205);
+  --p-400: oklch(0.668 0.088 205);
+  --p-500: oklch(0.565 0.091 205);
+  --p-600: oklch(0.487 0.079 205);
+  --p-700: oklch(0.42 0.068 205);
+  --p-800: oklch(0.338 0.054 205);
+  --p-900: oklch(0.268 0.042 205);
+  --p-950: oklch(0.212 0.034 205);
+
+  /* Um passo só não serve aos dois temas: no claro precisa ser mais escuro. */
+  --n-ink3-light: oklch(0.532 0.013 205);
+  --n-ink3-dark: oklch(0.652 0.013 205);
+}
+
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+
+  /* O fundo atras da coluna. Não recebe texto. */
+  --field: var(--n-150);
+  --shell-line: var(--n-200);
+
+  --bg: var(--n-025);
+  --surface: var(--n-000);
+  --surface-2: var(--n-050);
+  --surface-3: var(--n-100);
+
+  --ink: var(--n-975);
+  --ink-2: var(--n-600);
+  --ink-3: var(--n-ink3-light);
+  --ink-on-brand: var(--n-000);
+
+  --line: var(--n-200);
+  --line-strong: var(--n-300);
+  /* Gated a 3:1. O valor é ditado pelo pior fundo em que ela aparece, que é o
+     campo recuado atras da coluna, não a superficie do cartão. */
+  --field-line: oklch(0.575 0.013 205);
+
+  --brand: var(--p-700);
+  --brand-hover: var(--p-800);
+  --brand-active: var(--p-900);
+  --brand-subtle: var(--p-050);
+  --brand-line: var(--p-200);
+  --brand-text: var(--p-700);
+
+  /* A superficie que a cor carrega. */
+  --nav: var(--p-800);
+  /* Opaco de propósito: com alfa ficava fora do gate, é a medida mostrou que o
+     item inativo dava 4,45:1 contra ele, não os 6,10:1 medidos contra a barra. */
+  --nav-group: oklch(0.414 0.055 205);
+  --nav-ink: oklch(0.93 0.03 205);
+  --nav-ink-2: oklch(0.845 0.042 205);
+  /* Precisa de 3:1 contra a barra, é um passo escuro da rampa não entrega. */
+  --nav-active: var(--p-300);
+
+  --focus: var(--p-600);
+
+  --danger-text: oklch(0.505 0.19 25);
+  --danger-line: oklch(0.83 0.08 25);
+  --danger-subtle: oklch(0.968 0.014 25);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --field: oklch(0.142 0.015 205);
+  --shell-line: oklch(0.3 0.022 205);
+
+  --bg: oklch(0.19 0.02 205);
+  --surface: oklch(0.228 0.021 205);
+  --surface-2: oklch(0.262 0.022 205);
+  --surface-3: oklch(0.3 0.023 205);
+
+  --ink: oklch(0.952 0.008 205);
+  --ink-2: oklch(0.772 0.011 205);
+  --ink-3: var(--n-ink3-dark);
+  --ink-on-brand: oklch(0.16 0.02 205);
+
+  --line: oklch(0.33 0.022 205);
+  --line-strong: oklch(0.42 0.025 205);
+  --field-line: oklch(0.575 0.025 205);
+
+  --brand: var(--p-300);
+  --brand-hover: var(--p-200);
+  --brand-active: var(--p-100);
+  --brand-subtle: oklch(0.28 0.038 205);
+  --brand-line: oklch(0.4 0.055 205);
+  --brand-text: var(--p-300);
+
+  /* No escuro a barra sobe: mais escura que a página, ela desapareceria. */
+  --nav: oklch(0.295 0.047 205);
+  --nav-group: oklch(0.378 0.047 205);
+  --nav-ink: oklch(0.93 0.018 205);
+  --nav-ink-2: oklch(0.79 0.026 205);
+  --nav-active: var(--p-300);
+
+  --focus: var(--p-400);
+
+  --danger-text: oklch(0.79 0.115 25);
+  --danger-line: oklch(0.46 0.13 25);
+  --danger-subtle: oklch(0.28 0.05 25);
+}
+
+/* Cores do INATOS, só dentro do estudo de caso. Matizes tiradas do logo do
+   instituto: verde 152.7, laranja 51.6, vermelho 26.8 e azul 234.8. Laranja e
+   vermelho vem re-afinados para 56 e 20, o ajuste feito em produção para
+   garantir 36 graus de separacao perceptual. */
+
+.inatos-palette {
+  /* Tokens de texto, não de preenchimento: o verde vivo do logo da 4,18:1
+     sobre papel e reprova. */
+  --i-success: oklch(0.499 0.139 149.15);
+  --i-warning: oklch(0.523 0.1267 56);
+  --i-danger: oklch(0.537 0.213 20);
+  --i-info: oklch(0.529 0.194 258);
+
+  --i-success-line: oklch(0.86 0.06 150.55);
+  --i-warning-line: oklch(0.86 0.06 56);
+  --i-danger-line: oklch(0.85 0.07 20);
+  --i-info-line: oklch(0.85 0.07 258);
+
+  --i-success-subtle: oklch(0.965 0.02 150.55);
+  --i-warning-subtle: oklch(0.965 0.019 56);
+  --i-danger-subtle: oklch(0.965 0.016 20);
+  --i-info-subtle: oklch(0.965 0.015 258);
+}
+
+[data-theme='dark'] .inatos-palette {
+  --i-success: oklch(0.79 0.16 150.55);
+  --i-warning: oklch(0.785 0.144 56);
+  --i-danger: oklch(0.789 0.1205 20);
+  --i-info: oklch(0.79 0.1 258);
+
+  --i-success-line: oklch(0.45 0.1 150.55);
+  --i-warning-line: oklch(0.45 0.09 56);
+  --i-danger-line: oklch(0.46 0.13 20);
+  --i-info-line: oklch(0.46 0.11 258);
+
+  --i-success-subtle: oklch(0.27 0.045 150.55);
+  --i-warning-subtle: oklch(0.27 0.04 56);
+  --i-danger-subtle: oklch(0.27 0.05 20);
+  --i-info-subtle: oklch(0.27 0.05 258);
+}
+
+:root {
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, monospace;
+
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3rem;
+  /* Teto de 6rem. */
+  --text-display: clamp(2.75rem, 7vw, 6rem);
+  --text-display-s: clamp(2rem, 5vw, 3.75rem);
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  /* Cuidado: esta escala e nomeada, e no Tailwind v4 ela tem precedencia sobre
+     `--container-*`. `max-w-sm` resolve para 0.75rem, não 24rem. Para largura e
+     altura use valor literal, `max-w-[24rem]`. */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 5rem;
+  --space-4xl: 7.5rem;
+
+  /* Saida em ~65% da entrada. */
+  --dur-fast: 120ms;
+  --dur-base: 190ms;
+  --dur-slow: 280ms;
+  --dur-exit: 120ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.64, 0, 0.78, 0);
+
+  --control-sm: 32px;
+  --control-md: 40px;
+  --control-touch: 44px;
+
+  /* Escala semântica, sem 9999. */
+  --z-base: 0;
+  --z-nav: 20;
+  --z-sticky: 30;
+  --z-backdrop: 50;
+  --z-modal: 60;
+  --z-skip: 90;
+}
+
+/* Ponte com o Tailwind v4. */
+@theme inline {
+  --color-field: var(--field);
+  --color-shell-line: var(--shell-line);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-on-brand: var(--ink-on-brand);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-field-line: var(--field-line);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-active: var(--brand-active);
+  --color-brand-subtle: var(--brand-subtle);
+  --color-brand-line: var(--brand-line);
+  --color-brand-text: var(--brand-text);
+  --color-nav: var(--nav);
+  --color-nav-group: var(--nav-group);
+  --color-nav-ink: var(--nav-ink);
+  --color-nav-ink-2: var(--nav-ink-2);
+  --color-nav-active: var(--nav-active);
+  --color-focus: var(--focus);
+  --color-danger-text: var(--danger-text);
+  --color-danger-line: var(--danger-line);
+  --color-danger-subtle: var(--danger-subtle);
+
+  --color-i-success: var(--i-success);
+  --color-i-warning: var(--i-warning);
+  --color-i-danger: var(--i-danger);
+  --color-i-info: var(--i-info);
+  --color-i-success-line: var(--i-success-line);
+  --color-i-warning-line: var(--i-warning-line);
+  --color-i-danger-line: var(--i-danger-line);
+  --color-i-info-line: var(--i-info-line);
+  --color-i-success-subtle: var(--i-success-subtle);
+  --color-i-warning-subtle: var(--i-warning-subtle);
+  --color-i-danger-subtle: var(--i-danger-subtle);
+  --color-i-info-subtle: var(--i-info-subtle);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --text-2xs: var(--text-2xs);
+  --text-xs: var(--text-xs);
+  --text-sm: var(--text-sm);
+  --text-base: var(--text-base);
+  --text-lg: var(--text-lg);
+  --text-xl: var(--text-xl);
+  --text-2xl: var(--text-2xl);
+  --text-3xl: var(--text-3xl);
+  --text-4xl: var(--text-4xl);
+  --text-display: var(--text-display);
+  --text-display-s: var(--text-display-s);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-pill: var(--radius-pill);
+
+  --spacing-2xs: var(--space-2xs);
+  --spacing-xs: var(--space-xs);
+  --spacing-sm: var(--space-sm);
+  --spacing-md: var(--space-md);
+  --spacing-lg: var(--space-lg);
+  --spacing-xl: var(--space-xl);
+  --spacing-2xl: var(--space-2xl);
+  --spacing-3xl: var(--space-3xl);
+  --spacing-4xl: var(--space-4xl);
+
+  --ease-out: var(--ease-out);
+  --ease-in: var(--ease-in);
+}
