@@ -1,0 +1,12 @@
+# Fallback de aplicacao de pagina unica.
+#
+# O site tem cinco rotas de verdade (/perfil, /design-system, /inatos,
+# /curriculo, /contato) resolvidas no navegador. Sem esta linha, abrir uma
+# delas direto pela URL, ou so recarregar a pagina, devolve 404: o servidor
+# procura um arquivo com aquele nome e nao acha.
+#
+# Arquivo que existe de verdade continua ganhando desta regra, entao os PDFs e
+# os HTML do curriculo seguem sendo servidos como eles mesmos.
+#
+# Lido por Netlify e por Cloudflare Pages. A Vercel usa o vercel.json.
+/*  /index.html  200

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kayke Siquara Mendonça — Front-End &amp; UI/UX Developer</title>
+<meta name="author" content="Kayke Siquara Mendonça">
+<style>
+  /* ------------------------------------------------------------------
+     Tokens
+     ------------------------------------------------------------------ */
+  :root {
+    --ink:        #1f1f1f;
+    --ink-2:      #4a4a4a;
+    --muted:      #7a7a7a;
+    --rule:       #e4e4e4;
+    --accent:     #1f4b8e;   /* heading blue, same as the original */
+    --box:        #fafafa;
+    --todo-bg:    #fff3bf;   /* marker for fields still to fill in */
+    --todo-ink:   #7a5a00;
+
+    --font: "Segoe UI", "Segoe UI Variable Text", Inter, "Helvetica Neue", Arial, sans-serif;
+
+    --fs-name:  20pt;
+    --fs-title: 11.5pt;
+    --fs-body:  9.2pt;
+    --fs-meta:  8.6pt;
+    --fs-label: 8pt;
+    --fs-num:   16pt;
+
+    --label-col: 68pt;       /* label column, narrower than the original */
+    --gap-col:   10pt;
+  }
+
+  /* ------------------------------------------------------------------
+     Page
+     ------------------------------------------------------------------ */
+  @page { size: A4; margin: 11mm 14mm 11mm 14mm; }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font);
+    font-size: var(--fs-body);
+    line-height: 1.34;
+    color: var(--ink);
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @media screen {
+    body { background: #ededed; }
+    .page {
+      width: 210mm; min-height: 297mm; margin: 24px auto;
+      padding: 11mm 14mm; background: #fff;
+      box-shadow: 0 2px 14px rgba(0,0,0,.12);
+    }
+  }
+  a { color: inherit; text-decoration: none; }
+  b, strong { font-weight: 600; }
+
+  /* ------------------------------------------------------------------
+     Header
+     ------------------------------------------------------------------ */
+  header { padding-bottom: 7pt; border-bottom: 1px solid var(--rule); }
+  h1 {
+    margin: 0; font-size: var(--fs-name); font-weight: 700;
+    letter-spacing: -0.01em; line-height: 1.15;
+  }
+  .role {
+    margin: 2pt 0 7pt; color: var(--accent);
+    font-size: var(--fs-title); font-weight: 600;
+  }
+  .contact {
+    margin: 0; padding: 0; list-style: none;
+    display: flex; flex-wrap: wrap; gap: 1pt 12pt;
+    font-size: 8.6pt; color: var(--ink-2);
+  }
+  .contact b { color: var(--ink); margin-right: 3pt; }
+
+  /* ------------------------------------------------------------------
+     Sections: label on the left, content on the right
+     ------------------------------------------------------------------ */
+  section {
+    display: grid;
+    grid-template-columns: var(--label-col) 1fr;
+    column-gap: var(--gap-col);
+    padding: 7.5pt 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: 0; }
+  h2 {
+    margin: 2pt 0 0; font-size: 7.8pt; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+    line-height: 1.3;
+  }
+  .content p { margin: 0; }
+
+  /* Profile */
+  .perfil p { font-size: 9.5pt; line-height: 1.4; }
+
+  /* By the numbers */
+  .numbers {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 12pt;
+    padding: 1pt 0 0;
+  }
+  .numbers div { display: flex; flex-direction: column; padding-left: 9pt; border-left: 1px solid var(--rule); }
+  .numbers div:first-child { padding-left: 0; border-left: 0; }
+  .numbers .n {
+    font-size: var(--fs-num); font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+  .numbers .l { font-size: 8.2pt; color: var(--muted); line-height: 1.25; margin-top: 2pt; text-wrap: balance; }
+
+  /* Experience */
+  .job { margin-bottom: 4pt; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; }
+  .job-head h3 { margin: 0; font-size: 10.6pt; font-weight: 700; }
+  .job-head .when { font-size: var(--fs-meta); color: var(--muted); white-space: nowrap; }
+  .job .org { font-size: var(--fs-meta); color: var(--ink-2); margin-top: 1pt; }
+  .job .desc { font-size: var(--fs-meta); color: var(--muted); margin-top: 1pt; line-height: 1.35; }
+  ul.bullets { margin: 4pt 0 0; padding: 0; list-style: none; }
+  ul.bullets li {
+    position: relative; padding-left: 11pt; margin: 0 0 3.2pt;
+    line-height: 1.36;
+  }
+  ul.bullets li::before {
+    content: ""; position: absolute; left: 1pt; top: 0.56em;
+    width: 3.5pt; height: 3.5pt; border-radius: 50%; background: #b9b9b9;
+  }
+  .job + .job { margin-top: 8pt; }
+
+  /* Skills */
+  .skills { margin: 0; display: grid; grid-template-columns: 70pt 1fr; gap: 3pt 10pt; }
+  .skills dt { margin: 0; font-weight: 600; color: var(--ink-2); font-size: var(--fs-meta); line-height: 1.38; }
+  .skills dd { margin: 0; font-size: var(--fs-meta); line-height: 1.38; }
+
+  /* Education */
+  .edu .job { margin-bottom: 0; }
+
+  /* ------------------------------------------------------------------
+     Fields still to fill in. Remove the "todo" class (or the whole span)
+     once filled. Everything in yellow needs your input.
+     ------------------------------------------------------------------ */
+  .nw { white-space: nowrap; }
+  .todo {
+    background: var(--todo-bg); color: var(--todo-ink);
+    border-radius: 2pt; padding: 0 2pt;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Kayke Siquara Mendonça</h1>
+    <p class="role">Front-End &amp; UI/UX Developer</p>
+    <ul class="contact">
+      <li><b>Email</b><a href="mailto:kayke.siquara99@gmail.com">kayke.siquara99@gmail.com</a></li>
+      <li><b>Phone</b>+55 21 97431-7594</li>
+      <li><b>GitHub</b><a href="https://github.com/KaykeSiquara">github.com/KaykeSiquara</a></li>
+      <li><b>LinkedIn</b><a href="https://linkedin.com/in/kaykesiquaramendonca">linkedin.com/in/kaykesiquaramendonca</a></li>
+      <li><b>Portfolio</b><a href="/">this site</a></li>
+      <li><b>Location</b>Rio de Janeiro, Brazil</li>
+    </ul>
+  </header>
+
+  <section class="perfil">
+    <h2>Profile</h2>
+    <div class="content">
+      <p><span class="nw">Front-end</span> and UI/UX developer (React, TypeScript). Designed, built and maintain the <span class="nw">front-end</span> of a management system in production, used daily by the Instituto INATOS team, along with the design system that supports it. Accessibility and contrast are verified by script, not by eye.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>By the numbers</h2>
+    <div class="content">
+      <div class="numbers">
+        <div><span class="n">117</span><span class="l">screens in React and TypeScript</span></div>
+        <div><span class="n">13</span><span class="l">UI primitives, replacing 55 duplicates</span></div>
+        <div><span class="n">257/257</span><span class="l">fields with an accessible name</span></div>
+        <div><span class="n">36</span><span class="l">contrast pairs verified by script</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <div class="content">
+
+      <div class="job">
+        <div class="job-head">
+          <h3>INATOS Management System — front-end &amp; UI/UX</h3>
+          <span class="when">Mar 2026 – present</span>
+        </div>
+        <p class="org">Instituto INATOS — National Institute for Assistance, Work, Opportunities and Health</p>
+        <p class="desc">Rio de Janeiro nonprofit running social-assistance programs for families in vulnerable situations. Internal financial reporting system (15 modules, 5 access roles) that replaced a web of spreadsheets.</p>
+        <ul class="bullets">
+          <li>Migrated the system from a Streamlit data prototype to React + TypeScript and took it to production as a product the team uses every day.</li>
+          <li>Created the design system from scratch: OKLCH palette derived from the brand colors (also the status vocabulary: paid, pending, disallowed), light/dark themes, typography and spacing tokens.</li>
+          <li>Built the UI primitives (button, field, table, dialog, combobox, filter, badge, chart), each with all seven states: default, hover, focus, active, disabled, loading and error.</li>
+          <li>Made the interface operable by keyboard and screen reader: accessible names on every field and 80 icon-only buttons, focus trapping in 56 dialogs. Before, keyboard users could not attach a file.</li>
+          <li>Wrote a dependency-free contrast validator (sRGB, OKLab, OKLCH and the WCAG 2.1 formula) that runs as a gate on both themes: 4.5:1 for text, 3:1 for indicators.</li>
+          <li>Ran an interface audit across every module, with 247 findings traced to their root cause, and cleared the type debt (30 TypeScript errors), now kept as a clean baseline.</li>
+          <li>Designed dense screens (financial tables, reconciliations, long forms, dashboards), responsive across 5 breakpoints: cards on mobile, pinned column on tablet, sidebar on desktop.</li>
+          <li>Shipped features that run in the browser itself: batch renaming via the File System Access API, PDF OCR with review before writing, spreadsheet export and Word document reading.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="content">
+      <dl class="skills">
+        <dt>Front-end</dt>
+        <dd>TypeScript, JavaScript (ES2022), HTML5, CSS3; React 18 (hooks, context, error boundaries), Vite 6, Tailwind CSS v4, Radix UI, Motion/Framer, Recharts; Python, SQL and PowerShell elsewhere in the system.</dd>
+        <dt>UI / UX</dt>
+        <dd>Design systems and tokens, OKLCH color, light/dark themes, typography and modular scale, responsive layout, micro-interactions, UX writing in Portuguese, interface audits.</dd>
+        <dt>Accessibility</dt>
+        <dd>WCAG 2.1 AA, accessible names, keyboard navigation, focus management in modals, aria and role, prefers-reduced-motion, color never the sole carrier of meaning.</dd>
+        <dt>Data &amp; APIs</dt>
+        <dd>REST, Fetch/streams, File System Access, localStorage, Intl (pt-BR dates and currency); loading and error states, long tables with filtering and sorting.</dd>
+        <dt>Tools</dt>
+        <dd>Git, Figma (Make and handoff), browser DevTools and VS Code.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="edu">
+    <h2>Education</h2>
+    <div class="content">
+      <div class="job">
+        <div class="job-head">
+          <h3>Associate Degree in Systems Analysis and Development</h3>
+          <span class="when">2024 – 2026</span>
+        </div>
+        <p class="org">UNISUAM, Rio de Janeiro · completed</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="langs">
+    <h2>Languages</h2>
+    <div class="content">
+      <dl class="skills">
+        <dt>English</dt>
+        <dd><b>Advanced.</b> One-year exchange in New Zealand, living and studying in English.</dd>
+        <dt>Portuguese</dt>
+        <dd>Native.</dd>
+      </dl>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
