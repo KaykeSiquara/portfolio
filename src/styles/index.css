@@ -1,0 +1,130 @@
+@import 'tailwindcss';
+@import './tokens.css';
+@import './components.css';
+
+@layer base {
+  * {
+    min-width: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  body {
+    /* O corpo pinta o campo. A coluna pinta a página. */
+    background: var(--field);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* O anel de foco nunca anima. Aparece no instante do foco. */
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  :where(a) {
+    color: inherit;
+  }
+
+  /* Números sempre tabulares, para a coluna não dancar. */
+  .num,
+  table,
+  time {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background: var(--brand-subtle);
+    color: var(--ink);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--line-strong);
+    border-radius: var(--radius-pill);
+    border: 3px solid var(--field);
+  }
+}
+
+@layer utilities {
+  /* A coluna. Largura fixa, centralizada, com o campo aparecendo dos lados a
+     partir de 896px de janela. Não é uma moldura de aparelho desenhada: não
+     há entalhe, não há borda arredondada de celular, não há barra de status
+     falsa. E só uma medida de leitura levada a serio, aplicada a página toda
+     em vez de só ao paragrafo. */
+  .shell {
+    /* A casca é o container de consulta de todo o site. Dentro dela as
+       variantes @sm, @xl e @3xl medem a COLUNA, não a janela: é a coluna que
+       manda no layout, e ela tem a mesma largura num monitor de 27 polegadas
+       e num de 13. */
+    container-type: inline-size;
+    width: 100%;
+    max-width: 56rem;
+    margin-inline: auto;
+    min-height: 100dvh;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 56rem) {
+    .shell {
+      border-inline: 1px solid var(--shell-line);
+    }
+  }
+
+  .measure {
+    max-width: 68ch;
+  }
+
+  /* Faixa horizontal que rola dentro de si, para a página nunca rolar. */
+  .scroll-x {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
