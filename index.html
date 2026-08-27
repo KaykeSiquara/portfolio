@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Kayke Siquara Mendonça, front-end e UI/UX</title>
+    <meta
+      name="description"
+      content="Desenvolvedor front-end e UI/UX. React, TypeScript, design system em OKLCH e acessibilidade verificada por script."
+    />
+    <meta property="og:title" content="Kayke Siquara Mendonça, front-end e UI/UX" />
+    <meta
+      property="og:description"
+      content="Desenvolvedor front-end e UI/UX. React, TypeScript, design system em OKLCH e acessibilidade verificada por script."
+    />
+    <meta property="og:type" content="website" />
+
+    <script>
+      // Aplica tema e idioma antes da primeira pintura, para nao piscar branco.
+      ;(function () {
+        try {
+          var t = localStorage.getItem('kayke_theme')
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          }
+          document.documentElement.setAttribute('data-theme', t)
+          var l = localStorage.getItem('kayke_lang')
+          document.documentElement.lang = l === 'en' ? 'en' : 'pt-BR'
+        } catch (e) {
+          /* modo privado sem storage: fica no padrao do atributo */
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
