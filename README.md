@@ -19,10 +19,13 @@ npm run dev
 
 ```bash
 npm run typecheck
-npm run check:contrast   # WCAG 2.1 nos dois temas, sem dependências
-npm run check:a11y       # teclado e nome acessível, precisa do dev no ar
-npm run build            # roda typecheck e contraste antes de compilar
+npm run check:contrast
+npm run check:a11y
+npm run build
 ```
+
+`check:a11y` precisa do servidor de desenvolvimento no ar. `build` roda o
+typecheck e o contraste antes de compilar.
 
 `check:contrast` lê `src/styles/tokens.css`, resolve as cadeias de `var()` e
 confere os pares de `src/lib/contrast-pairs.ts`: 4,5:1 em texto, 3:1 em
@@ -61,9 +64,11 @@ tem precedência sobre `--container-*`. Para largura e altura use valor literal,
 ## Publicar
 
 ```bash
-npm run build                        # raiz do domínio
-npm run build -- --base=/portfolio/  # subpasta
+npm run build
+npm run build -- --base=/portfolio/
 ```
+
+O primeiro serve para hospedagem na raiz do domínio, o segundo para subpasta.
 
 `public/_redirects` e `vercel.json` cuidam do fallback das rotas. Sem ele, abrir
 `/perfil` direto pela URL devolve 404. Vale notar que em hospedagem com esse
