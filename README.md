@@ -1,4 +1,4 @@
-# Portfólio de Kayke Siquara Mendonça
+# Portfólio
 
 React, TypeScript, Vite e Tailwind v4. Bilíngue, tema claro e escuro, seis
 rotas numa coluna de 56rem centralizada.
