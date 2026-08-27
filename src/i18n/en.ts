@@ -388,6 +388,7 @@ export const en: Dict = {
       'Contrast',
       'Five bands',
       'The rules',
+      'What remained',
     ],
     sections: {
       problem: {
@@ -486,6 +487,15 @@ export const en: Dict = {
             title: 'What cannot be measured does not become a claim',
             body: 'Contrast and accessible names go through a script before they turn into a promise. That is why the sections above carry numbers instead of adjectives, and it is the rule I take whole into the next interface.',
           },
+        ],
+      },
+      outcome: {
+        number: '09',
+        title: 'What remained after delivery',
+        body: [
+          'The reporting that used to live scattered across spreadsheets became a single record. The system shipped in 2026 and the team has opened it every day since. Today I only give occasional support, and that is the measure I care about: a system that needs its author every week was not delivered, it was lent.',
+          'What outlives me there is not the screens, it is the method. The palette still derives from the brand, the seven-state contract still holds for every new control, and the validator still runs. A rule written in a document depends on someone remembering it next Friday. A rule that breaks the build depends on no one.',
+          'That is the part I carry whole into the next interface, and you are already looking at it. This site uses the same state contract and the same validator, now over its own palette. The report you operated a few sections above is not a picture of a report: it is the script output, computed in your browser, in the theme you are using right now.',
         ],
       },
     },

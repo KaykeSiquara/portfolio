@@ -383,7 +383,7 @@ export const pt = {
       'O Instituto INATOS é uma ONG do Rio de Janeiro com programas socioassistenciais para famílias em vulnerabilidade. O sistema é interno, de prestação de contas, e a base tem dados de pessoas atendidas. Nada dele pode virar imagem numa página pública. Então este case não mostra telas. Ele executa a prova: a paleta, o contrato de estados, o validador de contraste e as faixas responsivas estão todos rodando aqui dentro, e você pode operar cada um.',
     toc: 'Nesta página',
     /* Rótulos curtos para o índice. O título inteiro de cada seção ocuparia
-       três linhas é o índice deixaria de ser escaneável de relance. */
+       três linhas e o índice deixaria de ser escaneável de relance. */
     rail: [
       'O problema',
       'A migração',
@@ -393,6 +393,7 @@ export const pt = {
       'Contraste',
       'Cinco faixas',
       'As regras',
+      'O que ficou',
     ],
     sections: {
       problem: {
@@ -491,6 +492,15 @@ export const pt = {
             title: 'O que não dá para medir não vira afirmação',
             body: 'Contraste e nome acessível passam por script antes de virarem promessa. É por isso que as seções anteriores trazem números e não adjetivos, e é a regra que eu levo inteira para a próxima interface.',
           },
+        ],
+      },
+      outcome: {
+        number: '09',
+        title: 'O que ficou depois da entrega',
+        body: [
+          'A prestação de contas que vivia espalhada em planilhas virou um registro único. O sistema foi entregue em 2026 e a equipe o abre todo dia desde então. Hoje eu dou só suporte pontual, e essa é a medida que me interessa: sistema que precisa do autor toda semana não foi entregue, foi emprestado.',
+          'O que sobrevive a mim ali não são as telas, é o método. A paleta continua derivando da marca, o contrato de sete estados continua valendo para todo controle novo, e o validador continua rodando. Regra escrita em documento depende de alguém lembrar dela na próxima sexta-feira. Regra que quebra o build não depende de ninguém.',
+          'É a parte que eu levo inteira para a próxima interface, e você já está olhando para ela. Este site usa o mesmo contrato de estados e o mesmo validador, agora sobre a paleta dele. O relatório que você operou algumas seções acima não é imagem de um relatório: é a saída do script, calculada no seu navegador, no tema que você está usando agora.',
         ],
       },
     },

@@ -18,6 +18,7 @@ const SECTION_IDS = [
   'contraste',
   'densidade',
   'regras',
+  'conclusao',
 ] as const
 
 export function InatosCase() {
@@ -49,9 +50,8 @@ export function InatosCase() {
               {copy.intro}
             </p>
 
-            {/* Um documento de oito seções
-                precisa dizer no comeco o que tem dentro, senao a única forma
-                de saber e rolar até o fim. */}
+            {/* Um documento de nove seções precisa dizer no começo o que tem
+                dentro, senão a única forma de saber é rolar até o fim. */}
             <nav aria-labelledby="toc-heading" className="mt-2xl">
               <h2
                 id="toc-heading"
@@ -178,6 +178,10 @@ export function InatosCase() {
                 </div>
               ))}
             </dl>
+          </Section>
+
+          <Section id="conclusao" number={sections.outcome.number} title={sections.outcome.title}>
+            <Prose paragraphs={sections.outcome.body} />
           </Section>
 
           <p className="section text-center">
